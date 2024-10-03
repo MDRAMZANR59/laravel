@@ -3,33 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Models\customer;
+use App\Models\Customer;
 use App\Http\Controllers\Api\BaseController;
 
-class customerController extends BaseController
+class CustomerController extends BaseController
 {
     public function index(){
-        $data=customer::get();
-        return $this->sendResponse($data,"customer data");
+        $data=Customer::get();
+        return $this->sendResponse($data,"Customer Data");
     }
-
     public function store(Request $request){
-        $data=customer::create($request->all());
-        return $this->sendResponse($data,"customer created successfully");
+        $data=Customer::create($request->all());
+        return $this->sendResponse($data,"Customer created successfully");
     }
-    public function show(customer $customer){
-        return $this->sendResponse($customer,"customer created successfully");
-    }
-
-    public function update(Request $request,$id){
-
-        $data=customer::where('id',$id)->update($request->all());
-        return $this->sendResponse($id,"customer updated successfully");
-    }
-
-    public function destroy(customer $customer)
-    {
-        $customer=$customer->delete();
-        return $this->sendResponse($customer,"customer deleted successfully");
+    public function show(Customer $customer){
+        return $this->sendResponse($customer,"Customer Show successfully");
     }
 }
