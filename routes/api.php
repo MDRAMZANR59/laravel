@@ -28,7 +28,7 @@ Route::controller(CustomerController::class)->group(function(){
     Route::get('customer/index','index');
     Route::post('customer/create','store');
     Route::get('customer/{customer}','show');
-    Route::post('customer/edit/{id}','update');
+    Route::post('customer/{id}','update');
     Route::delete('customer/{customer}','destroy');
     // Route::post('designation/create','store');
 });

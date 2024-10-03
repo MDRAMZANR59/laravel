@@ -17,6 +17,17 @@ class CustomerController extends BaseController
         return $this->sendResponse($data,"Customer created successfully");
     }
     public function show(Customer $customer){
-        return $this->sendResponse($customer,"Customer Show successfully");
+        return $this->sendResponse($customer,"Customer created successfully");
     }
+    public function update(Request $request,$id){
+        $data=Customer::where('id',$id)->update($request->all());
+        return $this->sendResponse($id,"Customer updated successfully");
+    }
+    
+    public function destroy(Customer $customer)
+    {
+        $customer=$customer->delete();
+        return $this->sendResponse($customer,"Customer deleted successfully");
+    }
+    
 }
