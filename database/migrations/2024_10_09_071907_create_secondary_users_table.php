@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('secondary_users', function (Blueprint $table) {
+        Schema::create('user_metas', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->foreignId('user_id')->constrained();
             $table->bigInteger('nid')->nullable();
             $table->date('dob')->nullable();
             $table->string('email')->nullable();
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->bigInteger('employeId')->nullable();
             $table->string('designation')->nullable();
             $table->string('signature')->nullable();
-            $table->string('password')->nullable();
             $table->string('photo')->nullable();
             $table->string('country')->nullable();
             $table->string('districts')->nullable();
@@ -38,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('secondary_users');
+        Schema::dropIfExists('user_metas');
     }
 };

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
+use App\Models\UserMeta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use Illuminate\Http\JsonResponse;
@@ -26,7 +27,12 @@ class AuthController extends BaseController
 
         $input= $r->all();
         $input['password']=bcrypt($input['password']);
+        $input['role_id']=3;
         $user=User::create($input);
+        /* add data to user meta */
+        $um['user_id']=$user->id;
+            UserMeta::create($um);
+
         $data['token']=$user->createToken('hosp')->plainTextToken;
         $data['data']=$user;
         return $this->sendResponse($data,"User register successfully");
