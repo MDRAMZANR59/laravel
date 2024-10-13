@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\StaffController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,5 +38,12 @@ Route::controller(UserController::class)->group(function(){
     Route::get('user/{user}','show');
     Route::post('user/edit/{id}','update');
     Route::delete('user/{user}','destroy');
+});
+Route::controller(StaffController::class)->group(function(){
+    Route::get('staff/index','index');
+    Route::post('staff/create','store');
+    Route::get('staff/{staff}','show');
+    Route::post('staff/edit/{id}','update');
+    Route::delete('staff/{staff}','destroy');
 });
 
