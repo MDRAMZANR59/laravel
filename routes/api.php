@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\StaffController;
+use App\Http\Controllers\Api\projectfilesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,5 +46,12 @@ Route::controller(StaffController::class)->group(function(){
     Route::get('staff/{staff}','show');
     Route::post('staff/edit/{id}','update');
     Route::delete('staff/{staff}','destroy');
+});
+Route::controller(projectfilesController::class)->group(function(){
+    Route::get('projectfiles/index','index');
+    Route::post('projectfiles/create','store');
+    Route::get('projectfiles/{projectfiles}','show');
+    Route::post('projectfiles/edit/{id}','update');
+    Route::delete('projectfiles/{projectfiles}','destroy');
 });
 
