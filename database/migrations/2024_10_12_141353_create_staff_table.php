@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('joiningDate')->nullable();
             $table->bigInteger('employeId')->nullable();
             $table->string('designation')->nullabel();
-            $table->string('language')->nullabel();
+            $table->string('expart')->nullabel();
             $table->string('department')->nullabel();
             $table->string('signature')->nullabel();
             $table->string('password')->nullabel();
