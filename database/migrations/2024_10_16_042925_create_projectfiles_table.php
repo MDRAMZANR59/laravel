@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('backLang')->nullable();
             $table->string('firstName')->nullable();
             $table->string('lastName')->nullable();
+            $table->bigInteger('phone')->nullable();
             $table->bigInteger('customerId')->nullable();
             $table->string('companyName')->nullable();
             $table->string('projectDes')->nullable();
