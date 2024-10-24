@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\StaffController;
 use App\Http\Controllers\Api\projectfilesController;
+use App\Http\Controllers\Api\CreateMailController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -53,5 +54,12 @@ Route::controller(projectfilesController::class)->group(function(){
     Route::get('projectfiles/{projectfiles}','show');
     Route::post('projectfiles/edit/{id}','update');
     Route::delete('projectfiles/{projectfiles}','destroy');
+});
+Route::controller(CreateMailController::class)->group(function(){
+    Route::get('compose/index','index');
+    Route::post('compose/create','store');
+    Route::get('compose/{compose}','show');
+    Route::post('compose/edit/{id}','update');
+    Route::delete('compose/{compose}','destroy');
 });
 
