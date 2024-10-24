@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('projectName')->nullable();
             $table->string('projectType')->nullabl();
             $table->string('doHoPr')->nullable();
-            $table->string('frontLang')->nullable();
+            $table->string('frontLiAndFrame')->nullable();
+            $table->string('backLib')->nullable();
+            $table->string('frontEndLan')->nullable();
             $table->string('backLang')->nullable();
+            $table->string('database')->nullable();
             $table->string('firstName')->nullable();
             $table->string('lastName')->nullable();
             $table->bigInteger('phone')->nullable();
-            $table->bigInteger('customerId')->nullable();
             $table->string('companyName')->nullable();
             $table->string('projectDes')->nullable();
             $table->bigInteger('badget')->nullable();
