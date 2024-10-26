@@ -13,22 +13,20 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('fristName')->nullable();
-            $table->string('lastName')->nullable();
+            $table->bigInteger('user_id')->nullable();
+            $table->string('name')->nullable();
+            $table->bigInteger('nid')->nullable();
             $table->string('email')->nullable();
             $table->bigInteger('phone')->nullable();
-            $table->string('projectName')->nullable();
-            $table->string('projectType')->nullable();
-            $table->string('companyName')->nullable();
-            $table->bigInteger('customerId')->nullable();
+            $table->string('password')->nullable();
             $table->string('photo')->nullable();
+            $table->string('companyName')->nullable();
             $table->string('country')->nullable();
             $table->string('districts')->nullable();
             $table->string('upozila')->nullable();
             $table->string('post')->nullable();
             $table->bigInteger('zipCode')->nullable();
             $table->string('state')->nullable();
-            $table->bigInteger('houseNumber')->nullable();
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
-use App\Models\UserMeta;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use Illuminate\Http\JsonResponse;
@@ -14,24 +14,31 @@ class AuthController extends BaseController
 {
     public function _register(Request $r): JsonResponse
     {
-        $validate=Validator::make($r->all(),[
-            'name'=>'required',
-            'email'=>'required|email|unique:users',
-            'password'=>'required',
-            'c_password'=>'required|same:password'
-        ]);
+        // $validate=Validator::make($r->all(),[
+        //     'name'=>'required',
+        //     'email'=>'required|email|unique:users',
+        //     'password'=>'required',
+        //     'c_password'=>'required|same:password'
+        // ]);
 
-        if($validate->fails()){
-            return $this->sendError($validate->errors(),"Validation Error",203);
-        }
-
+        // if($validate->fails()){
+        //     return $this->sendError($validate->errors(),"Validation Error",203);
+        // }
         $input= $r->all();
-        $input['password']=bcrypt($input['password']);
-        $input['role_id']=3;
-        $user=User::create($input);
-        /* add data to user meta */
-        $um['user_id']=$user->id;
-            UserMeta::create($um);
+
+        $userd['name']=$input['name'];
+        $userd['email']=$input['email'];
+        $userd['password']=bcrypt($input['password']);
+        $userd['role_id']=4;
+        $user=User::create($userd);
+
+        $customer['name']=$input['name'];
+        $customer['nid']=$input['nid'];
+        $customer['email']=$input['email'];
+        $customer['phone']=$input['phone'];
+        $customer['user_id']=$user->id;
+
+        Customer::create($customer);
 
         $data['token']=$user->createToken('hosp')->plainTextToken;
         $data['data']=$user;
@@ -39,12 +46,13 @@ class AuthController extends BaseController
 
     }
 
-    public function _login(Request $r):JsonResponse
+    public function _login(Request $r)
     {
         if(Auth::attempt(['email' => $r->email, 'password' => $r->password])){
-            $user=Auth::user();
+            $user=User::with('role','customer','usermeta')->where('id',Auth::user()->id)->first();
             $data['token']=$user->createToken('hosp')->plainTextToken;
             $data['data']=$user;
+
             return $this->sendResponse($data,"User login successfully");
         }else{
             return $this->sendError(['error'=>'email or password is not correct'],"Unauthorized",400);

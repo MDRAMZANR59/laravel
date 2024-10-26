@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\StaffController;
 use App\Http\Controllers\Api\projectfilesController;
 use App\Http\Controllers\Api\CreateMailController;
+use App\Http\Controllers\Api\CustomerNoteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -61,5 +62,12 @@ Route::controller(CreateMailController::class)->group(function(){
     Route::get('compose/{compose}','show');
     Route::post('compose/edit/{id}','update');
     Route::delete('compose/{compose}','destroy');
+});
+Route::controller(CustomerNoteController::class)->group(function(){
+    Route::get('customerNote/index','index');
+    Route::post('customerNote/create','store');
+    Route::get('customerNote/{customerNote}','show');
+    Route::post('customerNote/edit/{id}','update');
+    Route::delete('customerNote/{customerNote}','destroy');
 });
 
