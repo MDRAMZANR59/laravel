@@ -21,15 +21,16 @@ return new class extends Migration
             $table->string('frontEndLan')->nullable();
             $table->string('backLang')->nullable();
             $table->string('database')->nullable();
-            $table->string('firstName')->nullable();
-            $table->string('lastName')->nullable();
+            $table->string('name')->nullable();
             $table->bigInteger('phone')->nullable();
+            $table->string('email')->nullable();
             $table->string('companyName')->nullable();
-            $table->string('projectDes')->nullable();
-            $table->bigInteger('badget')->nullable();
-            $table->bigInteger('advance')->nullable();
-            $table->bigInteger('duration')->nullable();
-            $table->date('endDate')->nullable();
+            $table->string('description')->nullable();
+            $table->bigInteger('estimatedBudget')->nullable();
+            $table->date('reciveDate')->nullable();
+            $table->bigInteger('eDuration')->nullable();
+            $table->date('eEndDate')->nullable();
+            $table->string('projectLeader')->nullable();
             $table->timestamps();
         });
     }
