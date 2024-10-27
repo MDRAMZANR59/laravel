@@ -26,9 +26,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('login','_login');
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// 11
 Route::controller(CustomerController::class)->group(function(){
     Route::get('customer/index','index');
     Route::post('customer/create','store');
@@ -79,3 +77,7 @@ Route::controller(TaskController::class)->group(function(){
     Route::delete('task/{task}','destroy');
 });
 
+// 1
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
