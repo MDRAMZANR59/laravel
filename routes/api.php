@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\StaffController;
 use App\Http\Controllers\Api\projectfilesController;
 use App\Http\Controllers\Api\CreateMailController;
 use App\Http\Controllers\Api\CustomerNoteController;
+use App\Http\Controllers\Api\TaskController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -69,5 +70,12 @@ Route::controller(CustomerNoteController::class)->group(function(){
     Route::get('customerNote/{customerNote}','show');
     Route::post('customerNote/edit/{id}','update');
     Route::delete('customerNote/{customerNote}','destroy');
+});
+Route::controller(TaskController::class)->group(function(){
+    Route::get('task/index','index');
+    Route::post('task/create','store');
+    Route::get('task/{task}','show');
+    Route::post('task/edit/{id}','update');
+    Route::delete('task/{task}','destroy');
 });
 
