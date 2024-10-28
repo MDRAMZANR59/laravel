@@ -10,7 +10,9 @@ use App\Http\Controllers\Api\BaseController;
 class TaskController extends BaseController
 {
     public function index(){
-        $data=Task::get();
+        //relation
+        $data=Task::with('projectfile')->get();
+        //
         return $this->sendResponse($data,"Task Data");
     }
     public function store(Request $request){
