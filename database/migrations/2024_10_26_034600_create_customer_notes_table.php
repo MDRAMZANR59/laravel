@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('customer_notes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('customerId');
-            $table->bigInteger('employeeId');
-            $table->string('note');
-            $table->date('firstMeet');
-            $table->date('nextMeet');
-            $table->string('attachment');
-            $table->string('meetLocation');
+            $table->string('customerName')->nullable();
+            $table->bigInteger('customerId')->nullable();
+            $table->bigInteger('phone')->nullable();
+            $table->bigInteger('employeeId')->nullable();
+            $table->string('note')->nullable();
+            $table->date('firstMeet')->nullable();
+            $table->date('nextMeet')->nullable();
+            $table->string('attachment')->nullable();
+            $table->string('meetLocation')->nullable();
             $table->timestamps();
         });
     }

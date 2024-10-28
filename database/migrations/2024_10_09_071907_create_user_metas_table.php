@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_metas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->integer('user_id')->constrained();
             $table->bigInteger('nid')->nullable();
             $table->date('dob')->nullable();
             $table->string('email')->nullable();

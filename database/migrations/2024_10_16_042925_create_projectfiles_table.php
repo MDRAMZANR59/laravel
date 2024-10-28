@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('backLang')->nullable();
             $table->string('database')->nullable();
             $table->string('name')->nullable();
+            $table->integer('customerId')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('companyName')->nullable();
             $table->string('description')->nullable();
             $table->bigInteger('estimatedBudget')->nullable();
             $table->date('reciveDate')->nullable();

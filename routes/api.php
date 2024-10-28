@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\projectfilesController;
 use App\Http\Controllers\Api\CreateMailController;
 use App\Http\Controllers\Api\CustomerNoteController;
 use App\Http\Controllers\Api\TaskController;
+use App\Http\Controllers\Api\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -75,6 +76,13 @@ Route::controller(TaskController::class)->group(function(){
     Route::get('task/{task}','show');
     Route::post('task/edit/{id}','update');
     Route::delete('task/{task}','destroy');
+});
+Route::controller(ReviewController::class)->group(function(){
+    Route::get('review/index','index');
+    Route::post('review/create','store');
+    Route::get('review/{review}','show');
+    Route::post('review/edit/{id}','update');
+    Route::delete('review/{review}','destroy');
 });
 
 // 1
