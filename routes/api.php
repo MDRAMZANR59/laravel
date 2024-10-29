@@ -26,8 +26,9 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('register','_register');
     Route::post('login','_login');
 });
-
-// 11
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 Route::controller(CustomerController::class)->group(function(){
     Route::get('customer/index','index');
     Route::post('customer/create','store');
@@ -85,7 +86,3 @@ Route::controller(ReviewController::class)->group(function(){
     Route::delete('review/{review}','destroy');
 });
 
-// 1
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });

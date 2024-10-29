@@ -11,8 +11,8 @@ class Task extends Model
     protected $fillable=['projectId', 'employeeId', 'note', 'task', 'assignDate', 'finishDate', 'actualDate'];
 
     // relateion 
-    public function projectfiles(){
-        return $this->belongsTo(Projectfiles::class);
-    }
+    // public function projectfiles(){
+    //     return $this->belongsTo(Projectfiles::class);
+    // }
    //
 }

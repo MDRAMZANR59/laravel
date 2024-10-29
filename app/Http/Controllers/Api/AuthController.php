@@ -14,16 +14,16 @@ class AuthController extends BaseController
 {
     public function _register(Request $r): JsonResponse
     {
-        // $validate=Validator::make($r->all(),[
-        //     'name'=>'required',
-        //     'email'=>'required|email|unique:users',
-        //     'password'=>'required',
-        //     'c_password'=>'required|same:password'
-        // ]);
+        $validate=Validator::make($r->all(),[
+            'name'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required',
+            // 'c_password'=>'required|same:password'
+        ]);
 
-        // if($validate->fails()){
-        //     return $this->sendError($validate->errors(),"Validation Error",203);
-        // }
+        if($validate->fails()){
+            return $this->sendError($validate->errors(),"Validation Error",203);
+        }
         $input= $r->all();
 
         $userd['name']=$input['name'];
