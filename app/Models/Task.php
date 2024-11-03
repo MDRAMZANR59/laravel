@@ -10,7 +10,7 @@ class Task extends Model
     use HasFactory;
     protected $fillable=['projectName', 'employeeId', 'note', 'task', 'assignDate', 'finishDate', 'actualDate'];
 
-    // relateion 
+    // relateion
     // public function projectfiles(){
     //     return $this->belongsTo(Projectfiles::class);
     // }
