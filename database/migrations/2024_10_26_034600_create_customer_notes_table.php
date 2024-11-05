@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('customer_notes', function (Blueprint $table) {
             $table->id();
             $table->string('customerName')->nullable();
-            $table->bigInteger('customerId')->nullable();
+            $table->string('employeeName')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->bigInteger('employeeId')->nullable();
             $table->string('note')->nullable();

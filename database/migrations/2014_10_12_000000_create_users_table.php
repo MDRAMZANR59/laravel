@@ -19,8 +19,8 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->string('email')->unique()->nullable();
             $table->bigInteger('phone')->nullable();
-            $table->string('password')->nullable();
             $table->date('joiningDate')->nullable();
+            $table->string('password')->nullable();
             $table->string('designation')->nullable();
             $table->string('expart')->nullable();
             $table->string('department')->nullable();

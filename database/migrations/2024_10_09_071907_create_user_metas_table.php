@@ -18,8 +18,10 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->string('email')->nullable();
             $table->bigInteger('phone')->nullable();
+            $table->date('joiningDate')->nullable();
             $table->bigInteger('employeId')->nullable();
             $table->string('designation')->nullable();
+            $table->string('expart')->nullable();
             $table->string('signature')->nullable();
             $table->string('photo')->nullable();
             $table->string('country')->nullable();

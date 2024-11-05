@@ -36,6 +36,7 @@ class AuthController extends BaseController
         $customer['nid']=$input['nid'];
         $customer['email']=$input['email'];
         $customer['phone']=$input['phone'];
+        $customer['joiningDate']=$input['joiningDate'];
         $customer['user_id']=$user->id;
 
         Customer::create($customer);
