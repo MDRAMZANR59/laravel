@@ -8,9 +8,11 @@ use App\Http\Controllers\Api\BaseController;
 
 class CustomerNoteController extends BaseController
 {
+     //rel
     public function index(){
         $data=CustomerNote::with('customer','employee')->get();
         return $this->sendResponse($data,"Customer Note Data");
+        //
     }
     public function store(Request $request){
 
