@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 class projectfilesController extends BaseController
 {
     public function index(){
-        $data=Projectfile::get();
+        $data=Projectfile::with(['task','comtask'])->get();
         return $this->sendResponse($data,"Projectfile Data");
     }
     public function store(Request $request){
@@ -23,7 +23,7 @@ class projectfilesController extends BaseController
         $data=Projectfile::where('id',$id)->update($request->all());
         return $this->sendResponse($id,"Projectfile updated successfully");
     }
-    
+
     public function destroy(Projectfile $projectfile)
     {
         $projectfile=$projectfile->delete();

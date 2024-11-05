@@ -58,7 +58,4 @@ class AuthController extends BaseController
             return $this->sendError(['error'=>'email or password is not correct'],"Unauthorized",400);
         }
     }
-
-
-
 }

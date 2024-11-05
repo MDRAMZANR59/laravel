@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class CustomerNote extends Model
 {
     use HasFactory;
-    protected $fillable=['customerName','customerId', 'employeeId','phone', 'note', 'firstMeet', 'nextMeet', 'attachment', 'meetLocation'];
+    protected $fillable=['customerId', 'employeeId', 'note', 'firstMeet', 'nextMeet', 'attachment', 'meetLocation'];
+
+    public function customer(){
+        return $this->belongsTo(Customer::class,'customerId');
+    }
+    public function employee(){
+        return $this->belongsTo(User::class,'employeeId');
+    }
 }

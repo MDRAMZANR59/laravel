@@ -9,28 +9,28 @@ use App\Http\Controllers\Api\BaseController;
 class CustomerNoteController extends BaseController
 {
     public function index(){
-        $data=CustomerNote::get();
+        $data=CustomerNote::with('customer','employee')->get();
         return $this->sendResponse($data,"Customer Note Data");
     }
     public function store(Request $request){
+
         /* for files */
-   $input=$request->all();
-   $files=[];
-   if($request->hasFile('files')){
-       foreach($request->file('files') as $f){
-           $photoname=time().rand(1111,9999).".".$f->extension();
-           $photoPath=public_path().'/customerNote';
-           if($f->move($photoPath,$photoname)){
-               array_push($files,$photoname);
-           }
-       }
-   }
-   $input['attachment']=implode(',',$files);
+        $input=$request->all();
+        $files=[];
+        if($request->hasFile('files')){
+            foreach($request->file('files') as $f){
+                $photoname=time().rand(1111,9999).".".$f->extension();
+                $photoPath=public_path().'/customerNote';
+                if($f->move($photoPath,$photoname)){
+                    array_push($files,$photoname);
+                }
+            }
+        }
+
+        $input['attachment']=implode(',',$files);
         /* /for files */
         $data=CustomerNote::create($input);
-        $input=$request->all();
-        $input['id']=$data->id;
-        $data=CustomerNote::create($request->all());
+
         return $this->sendResponse($data,"Customer Note created successfully");
     }
     public function show(CustomerNote $customerNote){
@@ -54,7 +54,7 @@ class CustomerNoteController extends BaseController
         $data=CustomerNote::where('id',$id)->update($request->all());
         return $this->sendResponse($id,"Customer Note updated successfully");
     }
-    
+
     public function destroy(CustomerNote $customerNote)
     {
         $customerNote=$customerNote->delete();

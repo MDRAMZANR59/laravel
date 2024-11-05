@@ -14,20 +14,30 @@ class UserController extends BaseController
         return $this->sendResponse($data,"user Data");
     }
     public function store(Request $request){
+
+        $input=$request->all();
+
         /* for files */
-   $input=$request->all();
-   $files=[];
-   if($request->hasFile('files')){
-       foreach($request->file('files') as $f){
-           $photoname=time().rand(1111,9999).".".$f->extension();
-           $photoPath=public_path().'/adduser';
-           if($f->move($photoPath,$photoname)){
-               array_push($files,$photoname);
-           }
-       }
-   }
-   $input['photo']=implode(',',$files);
-   /* /for files */
+        if($request->hasFile('signature')){
+            $f=$request->file('signature');
+            $photoname=time().rand(1111,9999).".".$f->extension();
+            $photoPath=public_path().'/adduser';
+            if($f->move($photoPath,$photoname)){
+                $input['signature']=$photoname;
+            }
+
+        }
+
+        if($request->hasFile('photo')){
+            $f=$request->file('photo');
+            $photoname=time().rand(1111,9999).".".$f->extension();
+            $photoPath=public_path().'/adduser';
+            if($f->move($photoPath,$photoname)){
+                $input['photo']=$photoname;
+            }
+        }
+
+        /* /for files */
 
         $data=User::create($input);
         $input=$request->all();
@@ -56,7 +66,7 @@ class UserController extends BaseController
         $data=User::where('id',$id)->update($input);
         return $this->sendResponse($id,"SecondaryUser updated successfully");
     }
-    
+
     public function destroy(User $User)
     {
         $User=$User->delete();

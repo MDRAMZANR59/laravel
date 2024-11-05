@@ -9,8 +9,15 @@ use App\Http\Controllers\Api\BaseController;
 
 class TaskController extends BaseController
 {
-    public function index(){
-        $data=Task::get();
+    public function index(Request $request){
+        $data=Task::with('projectfiles')->latest();
+
+        if($request->projectId){
+            $data=$data->where('projectId',$request->projectId);
+        }
+
+        $data=$data->get();
+
         return $this->sendResponse($data,"Task Data");
     }
     public function store(Request $request){
@@ -24,7 +31,7 @@ class TaskController extends BaseController
         $data=Task::where('id',$id)->update($request->all());
         return $this->sendResponse($id,"Task updated successfully");
     }
-    
+
     public function destroy(Task $task)
     {
         $task=$task->delete();

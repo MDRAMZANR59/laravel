@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            ;//relation
-            $table->string('projectName')->nullable();
+            //relation
+            $table->bigInteger('projectId')->nullable();
             //
             $table->bigInteger('employeeId')->nullable();
             $table->string('note')->nullable();
