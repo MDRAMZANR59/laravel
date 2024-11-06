@@ -22,6 +22,7 @@ return new class extends Migration
             $table->bigInteger('employeId')->nullable();
             $table->string('designation')->nullable();
             $table->string('expart')->nullable();
+            $table->string('department')->nullable();
             $table->string('signature')->nullable();
             $table->string('photo')->nullable();
             $table->string('country')->nullable();

@@ -14,5 +14,8 @@ class Task extends Model
     public function projectfiles(){
         return $this->belongsTo(Projectfile::class,'projectId');
     }
+    public function employee(){
+        return $this->belongsTo(User::class,'employeeId');
+    }
    //
 }

@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 class projectfilesController extends BaseController
 {
     public function index(){
-        $data=Projectfile::with(['task','comtask'])->get();
+        $data=Projectfile::with(['task','comtask','prolider','customer'])->get();
         return $this->sendResponse($data,"Projectfile Data");
     }
     public function store(Request $request){

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('frontEndLan')->nullable();
             $table->string('backLang')->nullable();
             $table->string('database')->nullable();
-            $table->string('name')->nullable();
-            $table->integer('customerId')->nullable();
+            $table->string('customerNameP')->nullable();
+            // $table->integer('customerId')->nullable();
             $table->bigInteger('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('description')->nullable();
