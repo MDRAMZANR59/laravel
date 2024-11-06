@@ -15,9 +15,8 @@ class UserController extends BaseController
     }
     public function store(Request $request){
 
-        $input=$request->all();
-
         /* for files */
+         $input=$request->all();
         if($request->hasFile('signature')){
             $f=$request->file('signature');
             $photoname=time().rand(1111,9999).".".$f->extension();
@@ -36,7 +35,6 @@ class UserController extends BaseController
                 $input['photo']=$photoname;
             }
         }
-
         /* /for files */
 
         $data=User::create($input);
@@ -49,20 +47,27 @@ class UserController extends BaseController
         return $this->sendResponse($User,"SecondaryUser created successfully");
     }
     public function update(Request $request,$id){
-        $input=$request->all();
         /* for files */
-        $files=[];
-        if($request->hasFile('files')){
-            foreach($request->file('files') as $f){
-                $photoname=time().rand(1111,9999).".".$f->extension();
-                $photoPath=public_path().'/adduser';
-                if($f->move($photoPath,$photoname)){
-                    array_push($files,$photoname);
-                }
+         $input=$request->all();
+        if($request->hasFile('signature')){
+            $f=$request->file('signature');
+            $photoname=time().rand(1111,9999).".".$f->extension();
+            $photoPath=public_path().'/adduser';
+            if($f->move($photoPath,$photoname)){
+                $input['signature']=$photoname;
             }
-            $input['photo']=implode(',',$files);
+
         }
-        unset($input['files']);
+
+        if($request->hasFile('photo')){
+            $f=$request->file('photo');
+            $photoname=time().rand(1111,9999).".".$f->extension();
+            $photoPath=public_path().'/adduser';
+            if($f->move($photoPath,$photoname)){
+                $input['photo']=$photoname;
+            }
+        }
+        /* /for files */
         $data=User::where('id',$id)->update($input);
         return $this->sendResponse($id,"SecondaryUser updated successfully");
     }
