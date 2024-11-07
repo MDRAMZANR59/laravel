@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 
 class TaskController extends BaseController
 {
+    
     public function index(Request $request){
         $data=Task::with('projectfiles','employee')->latest();
 
@@ -38,3 +39,4 @@ class TaskController extends BaseController
         return $this->sendResponse($task,"Task deleted successfully");
     }
 }
+

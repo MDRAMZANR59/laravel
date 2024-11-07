@@ -16,7 +16,7 @@ return new class extends Migration
             //relation
             $table->bigInteger('projectId')->nullable();
             //
-            $table->bigInteger('employeeId')->nullable();
+            $table->string('employeename_Id')->nullable();
             $table->string('note')->nullable();
             $table->string('task')->nullable();
             $table->date('assignDate')->nullable();
