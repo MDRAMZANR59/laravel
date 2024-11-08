@@ -10,7 +10,13 @@ class CustomerNoteController extends BaseController
 {
      //rel
     public function index(){
-        $data=CustomerNote::with('customer','employee')->get();
+        $data=CustomerNote::with('customer','employee')->latest();
+        if($request->employeeName){
+            $data=$data->where('employeeName',$request->employeeName);
+        }
+
+        $data=$data->get();
+
         return $this->sendResponse($data,"Customer Note Data");
         //
     }

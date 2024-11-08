@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 
 class TaskController extends BaseController
 {
-    
+
     public function index(Request $request){
         $data=Task::with('projectfiles','employee')->latest();
 

@@ -45,7 +45,6 @@ class User extends Authenticatable
     public function customer(){
         return $this->hasOne(Customer::class);
     }
-
     public function usermeta()
     {
         return $this->hasOne(UserMeta::class);

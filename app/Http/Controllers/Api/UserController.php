@@ -10,7 +10,7 @@ use App\Http\Controllers\Api\BaseController;
 class UserController extends BaseController
 {
     public function index(){
-        $data=User::with('role','usermeta')->get();
+        $data=User::with('role','usermeta','customer')->get();
         return $this->sendResponse($data,"user Data");
     }
     public function store(Request $request){
