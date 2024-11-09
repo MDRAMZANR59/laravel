@@ -9,8 +9,12 @@ use App\Http\Controllers\Api\BaseController;
 
 class UserController extends BaseController
 {
-    public function index(){
-        $data=User::with('role','usermeta','customer')->get();
+    public function index(Request $request){
+        $data=User::with('role','usermeta','customer');
+        if($request->role_id){
+            $data=$data->where('role_id',$request->role_id);
+        }
+        $data=$data->get();
         return $this->sendResponse($data,"user Data");
     }
     public function store(Request $request){
