@@ -14,6 +14,9 @@ class UserController extends BaseController
         if($request->role_id){
             $data=$data->where('role_id',$request->role_id);
         }
+        if($request->roles){
+            $data=$data->whereIn('role_id',explode(',',$request->roles));
+        }
         $data=$data->get();
         return $this->sendResponse($data,"user Data");
     }
