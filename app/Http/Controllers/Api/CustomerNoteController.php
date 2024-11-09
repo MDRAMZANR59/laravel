@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 class CustomerNoteController extends BaseController
 {
      //rel
-    public function index(){
+    public function index(Request $request){
         $data=CustomerNote::with('customer','employee')->latest();
         if($request->employeeName){
             $data=$data->where('employeeName',$request->employeeName);

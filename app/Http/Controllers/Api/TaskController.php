@@ -9,16 +9,16 @@ use App\Http\Controllers\Api\BaseController;
 
 class TaskController extends BaseController
 {
-
+    //filter
     public function index(Request $request){
         $data=Task::with('projectfiles','employee')->latest();
 
         if($request->projectId){
-            $data=$data->where('projectId',$request->projectId);
+            $data=Task::where('projectId',$request->projectId);
         }
 
         $data=$data->get();
-
+//
         return $this->sendResponse($data,"Task Data");
     }
     public function store(Request $request){
@@ -39,4 +39,3 @@ class TaskController extends BaseController
         return $this->sendResponse($task,"Task deleted successfully");
     }
 }
-

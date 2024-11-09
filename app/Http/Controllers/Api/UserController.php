@@ -11,6 +11,7 @@ class UserController extends BaseController
 {
     public function index(Request $request){
         $data=User::with('role','usermeta','customer');
+        //filter id
         if($request->role_id){
             $data=$data->where('role_id',$request->role_id);
         }
@@ -19,6 +20,7 @@ class UserController extends BaseController
         }
         $data=$data->get();
         return $this->sendResponse($data,"user Data");
+        //filter roll id
     }
     public function store(Request $request){
 
