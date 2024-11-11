@@ -12,13 +12,12 @@ class TaskController extends BaseController
     //filter
     public function index(Request $request){
         $data=Task::with('projectfiles','employee')->latest();
-
         if($request->projectId){
             $data=Task::where('projectId',$request->projectId);
         }
 
         $data=$data->get();
-//
+    //
         return $this->sendResponse($data,"Task Data");
     }
     public function store(Request $request){

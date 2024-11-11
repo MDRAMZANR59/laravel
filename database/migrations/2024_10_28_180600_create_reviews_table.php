@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->string('projectName')->nullable();
             $table->string('massage')->nullable();
+            $table->string('rating')->nullable();
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 class ReviewController extends BaseController
 {
     public function index(){
-        $data=Review::get();
+        $data=Review::with(['projectName'])->get();
         return $this->sendResponse($data,"Review Data");
     }
     public function store(Request $request){
@@ -23,7 +23,7 @@ class ReviewController extends BaseController
         $data=Review::where('id',$id)->update($request->all());
         return $this->sendResponse($id,"Review updated successfully");
     }
-    
+
     public function destroy(Review $review)
     {
         $review=$review->delete();
