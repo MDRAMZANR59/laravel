@@ -9,8 +9,4 @@ class Review extends Model
 {
     use HasFactory;
     protected $fillable=['projectName','massage','rating'];
-     // relateion
-     public function projectfiles(){
-        return $this->belongsTo(Projectfile::class,'projectName');
-    }
 }

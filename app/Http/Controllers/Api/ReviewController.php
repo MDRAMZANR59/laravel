@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 class ReviewController extends BaseController
 {
     public function index(){
-        $data=Review::with(['projectName'])->get();
+        $data=Review::get();
         return $this->sendResponse($data,"Review Data");
     }
     public function store(Request $request){

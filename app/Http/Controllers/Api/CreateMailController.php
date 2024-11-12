@@ -8,8 +8,12 @@ use App\Http\Controllers\Api\BaseController;
 
 class CreateMailController extends BaseController
 {
-    public function index(){
-        $data=CreateMail::get();
+    public function index(Request $request){
+        $data=CreateMail::latest();
+        if($request->status){
+            $data=$data->where('type',$request->status);
+        }
+        $data=$data->get();
         return $this->sendResponse($data,"Mail Data");
     }
     public function store(Request $request){

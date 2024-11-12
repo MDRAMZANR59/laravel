@@ -13,7 +13,7 @@ class TaskController extends BaseController
     public function index(Request $request){
         $data=Task::with('projectfiles','employee')->latest();
         if($request->projectId){
-            $data=Task::where('projectId',$request->projectId);
+            $data=$data->where('projectId',$request->projectId);
         }
 
         $data=$data->get();
@@ -28,7 +28,9 @@ class TaskController extends BaseController
         return $this->sendResponse($task,"Task created successfully");
     }
     public function update(Request $request,$id){
-        $data=Task::where('id',$id)->update($request->all());
+        $input=$request->all();
+        unset($input['projectfiles'],$input['employee']);
+        $data=Task::where('id',$id)->update($input);
         return $this->sendResponse($id,"Task updated successfully");
     }
 
