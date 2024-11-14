@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-    protected $fillable=['projectName','massage','rating'];
+    protected $fillable=['projectId','massage','rating'];
+    //rel
+    public function projectfiles(){
+        return $this->belongsTo(Projectfile::class,'projectId'); // customer note e data astese customer theke
+    }
 }

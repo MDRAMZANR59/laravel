@@ -8,9 +8,11 @@ use App\Http\Controllers\Api\BaseController;
 
 class ReviewController extends BaseController
 {
-    public function index(){
-        $data=Review::get();
+    public function index(Request $request){
+        //rel
+        $data=Review::with('reciver')->get();
         return $this->sendResponse($data,"Review Data");
+        //
     }
     public function store(Request $request){
         $data=Review::create($request->all());
