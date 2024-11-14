@@ -10,7 +10,7 @@ class ReviewController extends BaseController
 {
     public function index(Request $request){
         //rel
-        $data=Review::with('reciver')->get();
+        $data=Review::with('projectfiles')->get();
         return $this->sendResponse($data,"Review Data");
         //
     }
