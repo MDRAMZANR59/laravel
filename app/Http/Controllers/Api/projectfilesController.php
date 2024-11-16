@@ -29,4 +29,8 @@ class projectfilesController extends BaseController
         $projectfile=$projectfile->delete();
         return $this->sendResponse($projectfile,"Projectfile deleted successfully");
     }
+    public function project_review(Request $request,$id){
+        $data=Projectfile::where('id',$id)->update($request->all());
+        return $this->sendResponse($id,"Projectfile updated successfully");
+    }
 }

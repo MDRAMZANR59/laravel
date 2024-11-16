@@ -31,6 +31,10 @@ return new class extends Migration
             $table->bigInteger('eDuration')->nullable();
             $table->date('eEndDate')->nullable();
             $table->string('projectLeader')->nullable();
+            $table->string('massage')->nullable();
+            $table->string('rating')->nullable();
+            $table->string('cancelReason')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

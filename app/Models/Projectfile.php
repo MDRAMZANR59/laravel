@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Projectfile extends Model
 {
     use HasFactory;
-    protected $fillable=['projectName','projectType','doHoPr','frontLiAndFrame','backLib','frontEndLan','backLang','database','customerNameP','phone','email','description','estimatedBudget','reciveDate','eDuration','eEndDate','projectLeader'];
+    protected $fillable=['projectName','projectType','doHoPr','frontLiAndFrame','backLib','frontEndLan','backLang','database','customerNameP','phone','email','description','estimatedBudget','reciveDate','eDuration','eEndDate','projectLeader','massage','rating','cancelReason','status'];
 
     public function task(){
         return $this->hasMany(Task::class,'projectId');
