@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('massage')->nullable()->after('projectLeader');
             $table->string('rating')->nullable()->after('massage');
             $table->string('cancelReason')->nullable()->after('rating');
-            $table->string('status')->nullable()->after('cancelReason');
+            $table->string('status')->nullable()->after('cancelReason')->default('Active');
         });
     }
 

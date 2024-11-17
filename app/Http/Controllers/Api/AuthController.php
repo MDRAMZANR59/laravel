@@ -29,7 +29,7 @@ class AuthController extends BaseController
         $userd['name']=$input['name'];
         $userd['email']=$input['email'];
         $userd['password']=bcrypt($input['password']);
-        $userd['role_id']=4;
+        $userd['role_id']=1;
         $user=User::create($userd);
 
         $customer['name']=$input['name'];
