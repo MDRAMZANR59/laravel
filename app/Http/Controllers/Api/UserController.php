@@ -33,7 +33,6 @@ class UserController extends BaseController
             if($f->move($photoPath,$photoname)){
                 $input['signature']=$photoname;
             }
-
         }
 
         if($request->hasFile('photo')){

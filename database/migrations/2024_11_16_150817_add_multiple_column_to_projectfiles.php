@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projectfiles', function (Blueprint $table) {
-            $table->string('massage')->nullable();
-            $table->string('rating')->nullable();
-            $table->string('cancelReason')->nullable();
-            $table->string('status')->nullable();
+            $table->string('massage')->nullable()->after('projectLeader');
+            $table->string('rating')->nullable()->after('massage');
+            $table->string('cancelReason')->nullable()->after('rating');
+            $table->string('status')->nullable()->after('cancelReason');
         });
     }
 

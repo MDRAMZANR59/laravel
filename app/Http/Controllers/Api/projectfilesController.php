@@ -8,8 +8,16 @@ use App\Http\Controllers\Api\BaseController;
 
 class projectfilesController extends BaseController
 {
-    public function index(){
-        $data=Projectfile::with(['task','comtask','prolider','customer'])->get();
+    //filter
+    public function index(Request $request){
+        //filter
+        $data=Projectfile::with(['task','comtask','prolider','customer']);
+       //filter
+        if($request->status){
+            $data=$data->where('status',$request->status);
+        }
+        $data=$data->get();
+        //filter
         return $this->sendResponse($data,"Projectfile Data");
     }
     public function store(Request $request){
