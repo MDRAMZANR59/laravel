@@ -9,9 +9,15 @@ use App\Http\Controllers\Api\BaseController;
 class CreateMailController extends BaseController
 {
     public function index(Request $request){
-        $data=CreateMail::latest();
+        $data=CreateMail::with('reciver','sender');
+        if($request->senderId){
+            $data=$data->where('senderId',$request->senderId)->whereNull('status');
+        }
         if($request->status){
-            $data=$data->where('type',$request->status);
+            $data=$data->where('status',$request->status);
+        }
+        if($request->receverId){
+            $data=$data->where('receverId',$request->receverId)->whereNull('status');
         }
         $data=$data->get();
         return $this->sendResponse($data,"Mail Data");
@@ -28,9 +34,10 @@ class CreateMailController extends BaseController
         return $this->sendResponse($id,"Mail updated successfully");
     }
     
-    public function destroy(CreateMail $createMail)
+    public function destroy( $id)
     {
-        $createMail=$createMail->delete();
-        return $this->sendResponse($createMail,"Mail deleted successfully");
+        $data['status']=1;
+        $data=CreateMail::where('id',$id)->update($data);
+        return $this->sendResponse($data,"Mail deleted successfully");
     }
 }
