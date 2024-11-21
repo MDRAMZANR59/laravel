@@ -55,6 +55,7 @@ Route::controller(projectfilesController::class)->group(function(){
     Route::post('projectfiles/create','store');
     Route::get('projectfiles/{projectfiles}','show');
     Route::post('projectfiles/edit/{id}','update');
+    Route::post('projectfiles/updatestatus/{id}','updatestatus');
     Route::delete('projectfiles/{projectfiles}','destroy');
     Route::post('project_review/{projectfiles}','project_review');
 });

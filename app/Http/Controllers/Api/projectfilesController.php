@@ -31,6 +31,12 @@ class projectfilesController extends BaseController
         $data=Projectfile::where('id',$id)->update($request->all());
         return $this->sendResponse($id,"Projectfile updated successfully");
     }
+    public function updatestatus(Request $request,$id){
+        $data['status']='dalivard';
+        $data=Projectfile::where('id',$id)->update($data);
+        return $this->sendResponse($id,"Projectfile updated successfully");
+    }
+
 
     public function destroy(Projectfile $projectfile)
     {
