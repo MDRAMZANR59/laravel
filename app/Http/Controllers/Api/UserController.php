@@ -44,6 +44,7 @@ class UserController extends BaseController
             }
         }
         /* /for files */
+        $input['password']=bcrypt($input['password']);
 
         $data=User::create($input);
         $input=$request->all();
@@ -75,6 +76,10 @@ class UserController extends BaseController
                 $input['photo']=$photoname;
             }
         }
+
+        if($input['password'])
+            $input['password']=bcrypt($input['password']);
+
         /* /for files */
         $data=User::where('id',$id)->update($input);
         return $this->sendResponse($id,"SecondaryUser updated successfully");
