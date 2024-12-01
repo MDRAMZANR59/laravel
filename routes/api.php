@@ -58,6 +58,7 @@ Route::controller(projectfilesController::class)->group(function(){
     Route::post('projectfiles/updatestatus/{id}','updatestatus');
     Route::delete('projectfiles/{projectfiles}','destroy');
     Route::post('project_review/{projectfiles}','project_review');
+    Route::get('project_details/{id}','projectDetails');
 });
 Route::controller(CreateMailController::class)->group(function(){
     Route::get('compose/index','index');

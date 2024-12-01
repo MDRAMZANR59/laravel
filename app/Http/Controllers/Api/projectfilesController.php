@@ -47,4 +47,16 @@ class projectfilesController extends BaseController
         $data=Projectfile::where('id',$id)->update($request->all());
         return $this->sendResponse($id,"Projectfile updated successfully");
     }
+
+    public function projectDetails( $id){
+        //filter
+        $data=Projectfile::with(['task','comtask','prolider','customer']);
+        //filter
+        if($id){
+            $data=$data->where('id',$id);
+        }
+        $data=$data->first();
+        //filter
+        return $this->sendResponse($data,"Projectfile Data");
+    }
 }
