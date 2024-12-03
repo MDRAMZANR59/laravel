@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2024 at 08:42 AM
+-- Generation Time: Dec 03, 2024 at 08:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,20 +33,13 @@ CREATE TABLE `create_mails` (
   `receverId` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `mailType` varchar(255) DEFAULT NULL,
+  `reciver` varchar(255) DEFAULT NULL,
   `subject` varchar(255) DEFAULT NULL,
   `bodyMassage` varchar(255) DEFAULT NULL,
   `attachment` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `create_mails`
---
-
-INSERT INTO `create_mails` (`id`, `senderId`, `receverId`, `status`, `mailType`, `subject`, `bodyMassage`, `attachment`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '1', 'Rush Mail', 'asdf', 'asdfasdfasdf', NULL, '2024-11-19 00:11:31', '2024-11-19 00:33:23'),
-(2, 1, 2, NULL, 'Rush Mail', 'asdfasdf', 'asdfasdfasdf', NULL, '2024-11-19 00:32:02', '2024-11-19 00:32:02');
 
 -- --------------------------------------------------------
 
@@ -79,7 +72,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `user_id`, `nid`, `email`, `phone`, `password`, `photo`, `companyName`, `country`, `districts`, `upozila`, `post`, `zipCode`, `state`, `created_at`, `updated_at`) VALUES
-(1, 'Sohana', 3, 123456789, 'sohana@gmail.com', 123456789, '123', 'C:\\fakepath\\spencer-moore-1.jpg', NULL, 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Ramgarh', '2024-11-18 01:34:03', '2024-11-18 01:34:03');
+(1, 'Md Nurkhan', 5, 1578954612, 'nur@gmail.com', 1559874569, '123', 'C:\\fakepath\\IMG_20241130_135820247_HDR.jpg', 'Banglalink', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', '2024-12-03 13:27:54', '2024-12-03 13:27:54'),
+(2, 'Md Buppy', 6, 1458795246, 'buppy@gmail.com', 1559075856, '123', 'C:\\fakepath\\PXL_20241130_082414770.MP.jpg', 'Grameen Phone', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Ramgarh', '2024-12-03 13:29:18', '2024-12-03 13:29:18');
 
 -- --------------------------------------------------------
 
@@ -185,8 +179,9 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\User', 1, 'hosp', '2587d60fe90cc5636626239e8df7b21f4882fecc9aa76115198ffad600213206', '[\"*\"]', NULL, NULL, '2024-11-18 01:30:25', '2024-11-18 01:30:25'),
-(2, 'App\\Models\\User', 1, 'hosp', '70ea5e7a383e89d990602cb4815409885c7f1d2f32ddb34e89552510b0240e2c', '[\"*\"]', NULL, NULL, '2024-11-19 00:08:39', '2024-11-19 00:08:39');
+(1, 'App\\Models\\User', 1, 'hosp', '5f6948c19938153a1105e17faaa236d32e10ed76304a26d6bb5c1e7a3b9ad961', '[\"*\"]', NULL, NULL, '2024-12-03 12:15:11', '2024-12-03 12:15:11'),
+(2, 'App\\Models\\User', 1, 'hosp', 'ecf0633db4bb36f4950728dbcc1ac8a20f1111e2b31b677eb76fe5a476934bd4', '[\"*\"]', NULL, NULL, '2024-12-03 12:19:21', '2024-12-03 12:19:21'),
+(3, 'App\\Models\\User', 1, 'hosp', '3173d14e9f8a7ec83054db1e9062f8334cbd16f4021a36ffe929352745cc6a8b', '[\"*\"]', NULL, NULL, '2024-12-03 12:31:10', '2024-12-03 12:31:10');
 
 -- --------------------------------------------------------
 
@@ -226,11 +221,7 @@ CREATE TABLE `projectfiles` (
 --
 
 INSERT INTO `projectfiles` (`id`, `projectName`, `projectType`, `doHoPr`, `frontLiAndFrame`, `backLib`, `frontEndLan`, `backLang`, `database`, `customerNameP`, `phone`, `email`, `description`, `estimatedBudget`, `reciveDate`, `eDuration`, `eEndDate`, `projectLeader`, `massage`, `rating`, `cancelReason`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Online Schoole Managment', 'Web Application Devolopment', 'Code Crafters', 'React', 'Laravel', 'JavaScript', 'PHP', 'mysql', '1', NULL, NULL, 'Create Emidiatly', 500, '2024-11-19', NULL, '2025-11-18', '1', 'sdfdsfsdf', '2', 'cfvbgfbgf', 'cancel', '2024-11-18 01:35:23', '2024-11-18 01:36:32'),
-(2, 'HRM', 'Pc App Devolopment', 'Code Crafters', 'React', 'Laravel', 'JavaScript', 'PHP', 'mysql', '1', NULL, NULL, 'Urjent', 300, '2024-11-19', NULL, '2025-01-17', '1', 'dffdgdt', '5', NULL, 'Active', '2024-11-18 01:36:08', '2024-11-18 01:41:15'),
-(3, 'Mukut', 'Web Application Devolopment', 'Code Crafters', 'React', 'Laravel', 'JavaScript', 'PHP', 'mysql', '1', NULL, NULL, 'sfdsfdsf', 500, '2024-11-19', NULL, '2025-01-08', '1', 'sdfdsfsdf', '5', NULL, 'Active', '2024-11-18 21:46:34', '2024-11-18 23:50:32'),
-(4, 'sdfsdfs', 'Web Application Devolopment', NULL, 'React', 'Laravel', 'JavaScript', 'PHP', 'mysql', '1', NULL, NULL, 'sdfsd', 500, '2024-11-13', NULL, '2025-01-08', '2', 'sdfsf', '5', NULL, 'Active', '2024-11-18 23:51:11', '2024-11-18 23:51:32'),
-(5, 'sfsdf', 'Pc App Devolopment', 'Code Crafters', 'React', 'Express', 'JavaScript', 'Scala', 'mysql', '1', NULL, NULL, 'sdfsdf', 500, '2024-11-08', NULL, '2026-04-03', '1', 'sdfsdfs', '5', 'sddsfsdf', 'cancel', '2024-11-18 23:52:06', '2024-11-18 23:55:15');
+(1, 'Gallery', 'Android App Devolopment', 'Code Crafters', 'React', 'Laravel', 'JavaScript', 'PHP', 'mysql', '1', NULL, NULL, 'Mobile App', 500, '2024-12-04', 50, '2025-01-22', '2', NULL, NULL, NULL, 'dalivard', '2024-12-03 13:33:26', '2024-12-03 13:35:05');
 
 -- --------------------------------------------------------
 
@@ -251,10 +242,10 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `role_name`, `role_identity`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'superadmin', '2024-11-18 01:27:32', NULL),
-(2, 'Admin', 'admin', '2024-11-18 01:27:32', NULL),
-(3, 'Staff', 'staff', '2024-11-18 01:27:32', NULL),
-(4, 'Customer', 'customer', '2024-11-18 01:27:32', NULL);
+(1, 'Super Admin', 'superadmin', '2024-12-03 12:12:53', NULL),
+(2, 'Admin', 'admin', '2024-12-03 12:12:53', NULL),
+(3, 'Staff', 'staff', '2024-12-03 12:12:53', NULL),
+(4, 'Customer', 'customer', '2024-12-03 12:12:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -306,6 +297,14 @@ CREATE TABLE `tasks` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`id`, `projectId`, `employeename_Id`, `note`, `task`, `assignDate`, `finishDate`, `actualDate`, `created_at`, `updated_at`) VALUES
+(1, 1, '2', 'Design', 'Make It Static', '2024-12-04', '2025-01-07', '2024-12-25', '2024-12-03 13:34:08', '2024-12-03 13:34:08'),
+(2, 1, '4', 'Devolopment', 'Do All Development Work', '2024-12-04', '2025-01-29', '2024-12-25', '2024-12-03 13:34:47', '2024-12-03 13:34:47');
+
 -- --------------------------------------------------------
 
 --
@@ -344,9 +343,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `nid`, `dob`, `email`, `phone`, `joiningDate`, `password`, `designation`, `expart`, `department`, `signature`, `photo`, `country`, `districts`, `upozila`, `post`, `zipCode`, `state`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'kamal', NULL, NULL, 'kamal@gmail.com', NULL, NULL, '$2y$12$RMQvFYgsnn4fot4jX96RauR.M40qmwmWyFIHNf1fNnIPuKDBJfHXa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-11-18 01:30:14', '2024-11-18 01:30:14'),
-(2, 2, 'Mukut', 123456789, '1994-12-12', 'mukut@gmail.com', 123456789, '2023-01-15', '$2y$12$34ssUXbGi6FQ.CkXS/EHm.Zjz8o.PQzJhqEfH4lftsBcUtVlZcGJa', 'Web Deboloper', 'JavaScript, PHP, Laravel', NULL, '17319151932494.png', '17319151945190.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Ramgarh', NULL, NULL, '2024-11-18 01:33:14', '2024-11-18 01:33:14'),
-(3, 4, 'Sohana', 123456789, NULL, 'sohana@gmail.com', 123456789, NULL, '$2y$12$BAxk9kZhe9rwC9Q1Yibg2uvSHDL3ZZtvo544KlZjVFv0UwgD4G1ra', NULL, NULL, NULL, NULL, 'C:\\fakepath\\spencer-moore-1.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Ramgarh', NULL, NULL, '2024-11-18 01:34:03', '2024-11-18 01:34:03');
+(1, 1, 'Md Ramzan Ali', 7801861578, '1994-12-15', 'mdramzanaliisdbr59@gmail.com', 1559075906, '2024-01-16', '$2y$12$6iAQUa81UabZ5rDRwY3/GevbaXDFMMu29OeeFYBfeL6/4xX3Y2rEO', 'Super Admin', 'Bootstrap,JavaScript,PHP,LARAVEL,REACT,Vue', 'null', '17332499382847.jpg', '17332499388594.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', '0000-00-00 00:00:00', NULL, '2024-12-03 12:14:55', '2024-12-03 12:14:55'),
+(2, 2, 'Md Mukut', 78045612545, '1994-12-12', 'ahmedmukut@gmail.com', 1822976431, '2024-01-16', '$2y$12$9lkW1hQOvEPsc.zvo6apAO3okyCklpSrlJGBgOe.xinDTI9ikC4b2', 'HR', 'PHP, Laravel', 'Android App Development', '17332537068138.jpg', '17332537063179.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', '0000-00-00 00:00:00', NULL, '2024-12-03 13:19:26', '2024-12-03 13:19:26'),
+(3, 3, 'Mamun', 7805697845, '1994-05-02', 'mamun@gmail.com', 1559075852, '2024-01-16', '$2y$12$/WreOrjxdsd6yh57sRfjJOg1cCId8fK8x5a7QzL3Laqm6uM3t2Ys6', 'Staff', 'Vue, React, Laravel', NULL, '17332538742434.jpg', '17332538745604.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', NULL, NULL, '2024-12-03 13:24:34', '2024-12-03 13:24:34'),
+(4, 3, 'Julfiqur Raja', 15798564232, '1994-05-02', 'raja@gmail.com', 1559878564, '2024-01-16', '$2y$12$bySchtQZ5GMbDGOiaWdZput4WPwWD/KH4Ypj8jjaZXU.NCUTS0c9G', 'Staff', 'Botstrap, Vue, MySql', NULL, '17332540056786.jpg', '17332540058959.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', NULL, NULL, '2024-12-03 13:26:46', '2024-12-03 13:26:46'),
+(5, 4, 'Md Nurkhan', 1578954612, NULL, 'nur@gmail.com', 1559874569, NULL, '$2y$12$QxkcfvOG8b3Gt5WLZBCaQuqVkxopv28gHjoeObqW22slzGZqOFWjS', NULL, NULL, NULL, NULL, 'C:\\fakepath\\IMG_20241130_135820247_HDR.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', NULL, NULL, '2024-12-03 13:27:54', '2024-12-03 13:27:54'),
+(6, 4, 'Md Buppy', 1458795246, NULL, 'buppy@gmail.com', 1559075856, NULL, '$2y$12$iGTr62oZjXBdBY9.7uxTMuSkw4DAPWpUd3XwXHNLfOQ.N47tkVg36', NULL, NULL, NULL, NULL, 'C:\\fakepath\\PXL_20241130_082414770.MP.jpg', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Ramgarh', NULL, NULL, '2024-12-03 13:29:18', '2024-12-03 13:29:18');
 
 -- --------------------------------------------------------
 
@@ -383,7 +385,9 @@ CREATE TABLE `user_metas` (
 --
 
 INSERT INTO `user_metas` (`id`, `user_id`, `nid`, `dob`, `email`, `phone`, `joiningDate`, `employeId`, `designation`, `expart`, `department`, `signature`, `photo`, `country`, `districts`, `upozila`, `post`, `zipCode`, `state`, `created_at`, `updated_at`) VALUES
-(1, 2, 123456789, '1994-12-12', 'mukut@gmail.com', 123456789, '2023-01-15', NULL, 'Web Deboloper', 'JavaScript, PHP, Laravel', 'Web Application Development', 'D:\\1281518\\Xampp\\tmp\\phpA1D9.tmp', 'D:\\1281518\\Xampp\\tmp\\phpA1D8.tmp', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Ramgarh', '2024-11-18 01:33:14', '2024-11-18 01:33:14');
+(1, 2, 78045612545, '1994-12-12', 'ahmedmukut@gmail.com', 1822976431, '2024-01-16', NULL, 'HR', 'PHP, Laravel', 'Android App Development', 'D:\\Wdpf\\PHP\\Xampp8.12\\tmp\\phpB18.tmp', 'D:\\Wdpf\\PHP\\Xampp8.12\\tmp\\phpB08.tmp', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', '2024-12-03 13:19:27', '2024-12-03 13:19:27'),
+(2, 3, 7805697845, '1994-05-02', 'mamun@gmail.com', 1559075852, '2024-01-16', NULL, 'Staff', 'Vue, React, Laravel', 'PC App Debolopment', 'D:\\Wdpf\\PHP\\Xampp8.12\\tmp\\phpBF77.tmp', 'D:\\Wdpf\\PHP\\Xampp8.12\\tmp\\phpBF66.tmp', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', '2024-12-03 13:24:35', '2024-12-03 13:24:35'),
+(3, 4, 15798564232, '1994-05-02', 'raja@gmail.com', 1559878564, '2024-01-16', NULL, 'Staff', 'Botstrap, Vue, MySql', 'PC App Debolopment', 'D:\\Wdpf\\PHP\\Xampp8.12\\tmp\\phpC144.tmp', 'D:\\Wdpf\\PHP\\Xampp8.12\\tmp\\phpC133.tmp', 'Bangladesh', 'Khagrachari', 'Ramgarh', 'Ramgarh', 4440, 'Patachara', '2024-12-03 13:26:46', '2024-12-03 13:26:46');
 
 --
 -- Indexes for dumped tables
@@ -480,13 +484,13 @@ ALTER TABLE `user_metas`
 -- AUTO_INCREMENT for table `create_mails`
 --
 ALTER TABLE `create_mails`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customer_notes`
@@ -510,13 +514,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `projectfiles`
 --
 ALTER TABLE `projectfiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -534,19 +538,19 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_metas`
 --
 ALTER TABLE `user_metas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
